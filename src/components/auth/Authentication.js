@@ -26,7 +26,7 @@ const Authentication = () => {
  
                }
                alert("Authentication successfull!")
-               localStorage.setItem('email',response.email.replace('.',''))
+               localStorage.setItem('email',response.email)
                localStorage.setItem('token',response.idToken)
                dispatch(Authactions.loginHandler({"email":response.email.replace('.',''),"token":response.idToken}))
             }
@@ -47,7 +47,7 @@ const Authentication = () => {
            }
            alert("Authentication successfull!")
      
-           localStorage.setItem('email',response.email.replace('.',''))
+           localStorage.setItem('email',response.email)
            localStorage.setItem('token',response.idToken)
            dispatch(Authactions.loginHandler({email:localStorage.getItem('email'),token:localStorage.getItem('token')}))
         

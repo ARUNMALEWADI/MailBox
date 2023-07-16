@@ -1,0 +1,60 @@
+.div{
+    position: fixed;
+    display: grid;
+    align-items: flex-start ;
+    height: 100%;
+    width:20%;
+    background-color: grey;
+    border: 5px solid black;
+    
+    }
+    .div button {
+        position: relative;
+        display: inline-flex;
+        align-content: center;
+        padding: auto;
+        height: 2cm;
+        width: 100%;
+       cursor: pointer;
+       background-color: white;
+    
+    }
+
+    .div button:active{
+        color: white;
+        background-color: grey;
+    }
+    .div button img{
+        height: 40px;
+        width: 40px;
+    }
+
+    .div button section{
+        position: relative;
+        align-self: center;
+        font-size: xx-large;
+        padding: 10px;
+    }
+
+
+
+    .icon
+    {   position: relative;
+        display: inline-flex;
+        align-content: center;
+        width: 100%;
+        background-color: white;
+    }
+.icon img{
+    width: 100px;
+    height: 100px;
+    border-radius: 40px;
+    padding: 10px;
+    background-color: white;
+}
+.icon section{
+   font-size: xx-large;
+   font-weight: bold;
+   align-self: center;
+}
+    
