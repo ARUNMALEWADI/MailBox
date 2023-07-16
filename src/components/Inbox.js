@@ -13,6 +13,7 @@ const Inbox = () => {
 
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+  
   console.log(search);
   const InboxData = useSelector((state) => state.inbox.inboxData);
   const updateCounterOnDelete = useSelector(
@@ -72,6 +73,7 @@ const Inbox = () => {
 
   return<Fragment>
      <Panel></Panel>
+     
     <div className={classes.page}>
         <input
           type="search"
@@ -79,52 +81,22 @@ const Inbox = () => {
           placeholder="Search By Name"
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="InboxBoxName">INBOX</div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">No.</th>
-              <th scope="col">From</th>
-              <th scope="col">Subject</th>
-              <th scope="col">Message</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredInboxData.map((item, index) => {
+       <ul>
+         {filteredInboxData.map((item, index) => {
               return (
-                <tr key={item.id}>
-                  {/* index+1 caz it starting from zero so index + 1 = 1 */}
-                  <td scope="row">{index + 1}</td>
-
-                  {/* to show UNREAD MESSAGES  */}
-                  <td>
-                    {!item.read && <div className="dotDesign"></div>}
-                    {item.from}
-                  </td>
-                  <td>{item.subject}</td>
-
-                  {/* To View Specific Email  */}
-                  <td>
-                    <Link to={`/Inbox/${item.id}`}>View Message </Link>
-                  </td>
-
-                  {/* Passing id to delete sepcific Email  */}
-                  <td>
-                    <button
+                <li><div> {!item.read && <div className="dotDesign"></div>}
+                {item.from}</div><div>{item.subject}</div><div> <button
                       type="button"
                       class="btn btn-danger"
                       onClick={deleteHandler.bind(null, item.id)}
             
                     >
                       delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    </button></div></li>
+              )})
+            }
+         
+       </ul>
       </div>
   </Fragment>
 

@@ -17,6 +17,9 @@
         width: 100%;
        cursor: pointer;
        background-color: white;
+       text-decoration:double;
+       font-weight: bold;
+      
     
     }
 

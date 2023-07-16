@@ -7,7 +7,7 @@ import SendMail from './components/SendMail';
 import Trash from './components/Trash';
 import SentMail from './components/SentMail';
 
-function App() {
+function App() {  
   return <Fragment>
     <Switch>
       <Route path="/auth"><Authentication></Authentication></Route>
