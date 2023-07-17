@@ -61,3 +61,64 @@
    align-self: center;
 }
     
+
+@media screen and (max-width: 800px) {
+     .div button {
+        position:absolute;
+        display: inline-flex;
+        align-items: center 1cm;
+ 
+       
+      width: 95%; /* The width is 100%, when the viewport is 800px or smaller */
+      height: 5%;
+      border: 0.1px solid white;
+      border-radius: 10px;
+      font-size: small;
+    }
+    .div button section{
+        font-size: xx-small;
+        position: absolute;
+        margin-left: 10px;
+        padding-left: 10px;
+
+    }
+    .div button img{
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        margin-left: -10px;
+       margin-top: -5px;
+    }
+    .div{
+        position:absolute;
+           display: grid;
+           align-content:space-evenly;
+        width: 20%;
+        height: 75%;
+        border: 0.5px solid white;
+     
+        background-color: rgb(209, 233, 241);
+       
+    }
+    .icon{
+        position:absolute;
+        display: inline-flex;
+        align-content: space-evenly;
+        width: 10%;
+        height: 10%;
+    }
+    .icon img{
+        position:absolute;
+        width: 700%;
+        height: 80%;
+        border-radius: 0px;
+        
+    }
+    .icon section{
+        position:absolute;
+        font-size: xx-small;
+        font-weight: bold;
+        margin-top: 1.5cm;
+        margin-left: 0.6cm;        
+     }
+  }

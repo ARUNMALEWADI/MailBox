@@ -1,6 +1,74 @@
 .page{
-    position: relative;
+    position: fixed;
+
     width: 100%;
     height: 100%;
     margin-left: 30%;
 }
+.unread{
+    font-weight: bold;
+}
+.read{
+    font-weight:initial;
+}
+
+.ul{
+    position: fixed;
+    left: 21%;
+    list-style-type: none;
+    width: 100%;
+    height: max-content;
+    display: grid;
+    align-items:end;
+  background-color: yellow;
+  border:1px light grey;
+}
+
+
+
+.li{ 
+    position: relative;
+   margin-left: -1.1cm;
+    width: 80%;
+    height: 1cm;
+    
+    background-color: white;
+    border:0.5px solid rgb(198, 197, 197);
+   
+}
+.li:hover{
+    z-index: 10;
+    box-shadow: grey 5px 5px 5px 5px;
+
+}
+.li div{
+    position: relative;
+    padding-right: 1cm;
+    display: inline-flex;
+    align-self: center;
+}
+.delete{
+    position: fixed;
+    display: none;
+        
+       
+        z-index: 10;
+    
+  
+}
+  li:hover .delete{
+    position:fixed;
+        display:inline-flex;
+        align-items: center;
+        padding-left: 1cm;
+        font-size: large;
+        left: 0;
+        margin-left: 25cm;
+        margin-top: -11px;
+        z-index: 10;
+        height: 1cm;
+        width: 3cm;
+        color: yellow;
+        background-color: black;
+        cursor: pointer;
+    }

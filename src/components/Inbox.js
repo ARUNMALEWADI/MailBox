@@ -81,18 +81,16 @@ const Inbox = () => {
           placeholder="Search By Name"
           onChange={(e) => setSearch(e.target.value)}
         />
-       <ul>
+       <ul className={classes.ul}>
          {filteredInboxData.map((item, index) => {
               return (
-                <li><div> {!item.read && <div className="dotDesign"></div>}
-                {item.from}</div><div>{item.subject}</div><div> <button
+                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.from}</div><div className={classes.subject}>{item.subject}</div><div> <button
                       type="button"
-                      class="btn btn-danger"
+                      class={classes.delete}
                       onClick={deleteHandler.bind(null, item.id)}
-            
-                    >
+                                >
                       delete
-                    </button></div></li>
+                    </button></div></div></li>
               )})
             }
          
