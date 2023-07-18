@@ -40,9 +40,12 @@ const Inbox = () => {
     }
   };
 
+
   // Passing id -  to delete specific email :- To deleteData :-
-  const deleteHandler = (id) => {
-    deleteData(id);
+  const deleteHandler = (item) => {
+    deleteData(item.id);
+    UploadtoTrash(item);
+ 
   };
 
   // To delete when user click on delete , without refresh email get deleted ...fr that we use useEffect()
@@ -59,7 +62,18 @@ const Inbox = () => {
     }
   });
 
-
+async function UploadtoTrash(item){
+console.log("Hi");
+try{
+  const res=await fetch(`https://mailbox-a63bd-default-rtdb.firebaseio.com/Trash/${email}.json`,{method:"POST",body:JSON.stringify(item),headers:{"Content-Type":"application/json"}})
+  const response=res.json()
+ 
+  
+}
+catch(error)
+{ alert(error);
+}
+}
 
 
 
@@ -84,10 +98,10 @@ const Inbox = () => {
        <ul className={classes.ul}>
          {filteredInboxData.map((item, index) => {
               return (
-                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.from}</div><div className={classes.subject}>{item.subject}</div><div> <button
+                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.from}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div><div> <button
                       type="button"
                       class={classes.delete}
-                      onClick={deleteHandler.bind(null, item.id)}
+                      onClick={deleteHandler.bind(null, item)}
                                 >
                       delete
                     </button></div></div></li>

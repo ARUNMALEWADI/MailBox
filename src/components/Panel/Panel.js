@@ -48,7 +48,7 @@ const Panel = () => {
     useEffect(() => {
       const intervalId = setInterval(() => {
         getData();
-      }, 2000);
+      }, 5000);
   
       return () => {
         clearInterval(intervalId);
