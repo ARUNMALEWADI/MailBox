@@ -1,5 +1,6 @@
-import React,{Fragment, useState} from 'react'
+import React,{ useState} from 'react'
  import { ToastContainer, toast } from "react-toastify";
+import classes from './SendMail.module.css'
 import "react-toastify/dist/ReactToastify.css";
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -59,6 +60,7 @@ const SendMail = () => {
     }
  }
 
+ 
 
 
  const EditorStateChangeHandler=(e)=>{
@@ -85,30 +87,23 @@ const SendMail = () => {
 
   return <>
   <Panel></Panel>
-  <div className='container'>
-    <div className='ComposeParentMailBox'>
-      <div className='ChildBox1'>
-        <div>
-          To:-
-        </div>
-        <div className='sideDiv'>
-          <input type='email' placeholder='Enter Email Id' onChange={receiverHandler} value={receiver} />
-          <button className='btn btn-primary' onClick={submitHandler}>Send</button>
-        </div>
-
-      </div>
-      <div className='childBox2'>
-        <div>Subject :- </div>
-        <input type='text' value={subject} onChange={subjectHandler} />
-      </div>
-      <div className='childBox3'>
-        <Editor
+     <form className={classes.mailform} onSubmit={submitHandler}>
+     <input type='email' placeholder='Recipients' onChange={receiverHandler} value={receiver} className={classes.receiver} required />
+     <input type='text' value={subject} onChange={subjectHandler} className={classes.subject} /> 
+     <div className={classes.editer}>
+        <Editor 
           editorState={editorState}
           onEditorStateChange={EditorStateChangeHandler} />
       </div>
-    </div>
+  
+      <button  type='submit'  className={classes.send}>Send</button>
+    </form>
+   
+    
+   
     <ToastContainer />
-  </div></>
+ 
+  </>
   
 }
 

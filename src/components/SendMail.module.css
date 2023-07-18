@@ -1,19 +1,18 @@
 .mailform{
     position: fixed;
     display: grid;
-    align-items: center;
-    height: 10cm;
- 
-    overflow-wrap: break-word;
-
-
-    width: 77%;
+    align-items:normal;
+  overflow-wrap: break-word;
+  border: 50px solid lightblue;
+height: 85%;
+    width: 72%;
     padding: 10px;
-    margin-left: 22%;
+    margin-left: 20.5%;
     margin-right: 10%;
     
 }
 .receiver{
+    position: relative;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">To:</text></svg>') no-repeat;
     border: 1px solid white;
     outline: none;
@@ -22,9 +21,10 @@
     height: 30px;
     margin: 10px;
     padding-left: 50px;
-    width: 100%;
+    width: 95%;
   }
   .subject{
+    position: relative;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="30"><text x="5" y="19" style="font: bold 16px Arial;">Subject:</text></svg>') no-repeat;
     border: 1px solid white;
     border-bottom:1px solid grey;
@@ -32,7 +32,99 @@
     font: 16px "Arial";
     height: 30px;
     margin: 10px;
+    margin-top: -25%;
     padding-left: 100px;
-    width: 100%;
+    width: 90.5%;
   }
- 
+ .editer{
+    position: fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-right: 130px;
+    border: 5px solid rgb(210, 173, 173);
+    margin-left: -0.25cm;
+    
+   margin-top: 10%;
+   width: 64%;
+    height: 65%;
+
+ }
+ .send{
+    position: fixed;
+    border-color: white;
+    font-size: large;
+    font-weight: bold;
+    margin-left: 64%;
+    margin-top: 38.5%;
+    width: 7%;
+    height: 7%;
+    background-color: aqua;
+ }
+
+ @media screen and (max-width: 800px) {
+    .mailform{
+        position: fixed;
+        display: grid;
+        align-items:normal;
+      overflow-wrap: break-word;
+      border: 1px solid lightblue;
+    height: 85%;
+        width: 72%;
+        padding: 10px;
+        margin-left: 20.5%;
+        margin-right: 10%;
+        
+    }
+    .editer{
+        position: fixed;
+        overflow: hidden;
+        overflow-y: scroll;
+        padding-right: 10px;
+        border: 5px solid rgb(210, 173, 173);
+        margin-left: -0.25cm;
+        
+       margin-top: 40%;
+       width: 72%;
+        height: 65%;
+    
+     }
+    .receiver{
+        position: relative;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><text x="5" y="19" style="font: bold 16px Arial;">To:</text></svg>') no-repeat;
+        border: 1px solid white;
+        outline: none;
+       border-bottom:1px solid grey;
+        font: 16px "Arial";
+        height: 30px;
+        margin: 10px;
+        padding-left: 50px;
+        width: 95%;
+      }
+      .subject{
+        position: relative;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="30"><text x="5" y="19" style="font: bold 16px Arial;">Subject:</text></svg>') no-repeat;
+        border: 1px solid white;
+        border-bottom:1px solid grey;
+        outline: none;
+        font: 16px "Arial";
+        height: 30px;
+        margin: 10px;
+        margin-top: -7.5cm;
+        padding-left: 100px;
+        width: 90.5%;
+      }
+    
+     .send{
+        position: fixed;
+        border-color: white;
+        font-size: large;
+        font-weight: bold;
+        margin-left: 0%;
+        margin-top: 27.5%;
+        width: 30%;
+        height: 6%;
+        background-color: aqua;
+     }
+
+
+ }

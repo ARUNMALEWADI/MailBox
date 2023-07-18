@@ -1,6 +1,6 @@
 import React from "react";
-// import "./SentBox.css";
-// import SideBar from "./SideBar/SideBar";
+import classes from "./Inbox.module.css";
+
 import { sentBoxAction } from "./Store/SentMail-Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -59,57 +59,28 @@ const SentMail = () => {
 
   return <>
        <Panel></Panel>
-    <div className="ParentBox">
-      <div className="Sidebar">
-        {/* <SideBar /> */}
-      </div>
-      <div className="tableParentt">
-        <div className="SentBoxName">SENT BOX</div>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">No.</th>
-              <th scope="col">To</th>
-              <th scope="col">Subject</th>
-              <th scope="col">Message</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sentBoxData.map((item, index) => {
+       <div className={classes.page}>
+       <label style={{fontSize:"x-large",fontWeight:"bold"}}>SENTBOX:</label>
+       <ul className={classes.ul}>
+         {sentBoxData.map((item, index) => {
               return (
-                <tr key={item.id}>
-                  {/* index+1 caz it starting from zero so index + 1 = 1 */}
-                  <td scope="row">{index + 1}</td>
-
-                  {/* to whom you want to sent mail */}
-                  <td>{item.to}</td>
-
-                  {/* Subject  */}
-                  <td>{item.subject}</td>
-
-                  {/* To View Specific Email  */}
-                  <td>
-                    {item.message}
-                  </td>
-
-                  {/* Passing id to delete sepcific Email  */}
-                  <td>
-                    <button
+                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.to}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div><div> <button
                       type="button"
-                      class="btn btn-danger"
+                      class={classes.delete}
                       onClick={deleteHandler.bind(null, item.id)}
-                    >
+                                >
                       delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    </button></div></div></li>
+              )})
+            }
+         
+       </ul>
       </div>
-    </div>
+
+
+
+
+   
   </>
 };
 
