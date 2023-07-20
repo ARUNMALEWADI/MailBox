@@ -1,15 +1,18 @@
 .page{
     position: fixed;
-
+background-color: lightblue;
     width: 100%;
     height: 100%;
-    margin-left: 30%;
+    margin-left: 20.5%;
 }
 .unread{
     font-weight: bold;
+   
+    color: black;
 }
 .read{
-    font-weight:initial;
+    font-weight:lighter;
+    color: black;
 }
 
 .ul{
@@ -29,10 +32,13 @@
 .li{ 
     position: relative;
    margin-left: -1.1cm;
-    width: 80%;
+
+   text-underline-offset: none;
+    width: 78.5%;
     height: 1cm;
      background-color: white;
     border:0.5px solid rgb(198, 197, 197);
+  
    
 }
 .li:hover{
@@ -42,19 +48,20 @@
 }
 .li div{
     position: relative;
+    padding-left: 1cm;
     padding-right: 1cm;
     display: inline-flex;
     align-self: center;
 }
-.delete{
+/* .delete{
     position: fixed;
     display: none;
-        
+  
      z-index: 10;
     
   
-}
-  li:hover .delete{
+} */
+  /* li:hover .delete{
     position:fixed;
         display:inline-flex;
         align-items: center;
@@ -69,7 +76,54 @@
         color: yellow;
         background-color: black;
         cursor: pointer;
+    } */
+
+    .delete{
+        position: fixed;
+        display: none;
+      
+         z-index: 10;
+        
+      
     }
+
+    .div1{
+        position: relative;
+
+    }
+
+   .div1:hover .delete{
+        position:fixed;
+        display: inline-flex;
+    
+            z-index: 15;
+            align-items: center;
+            padding-left: 1cm;
+            font-size: large;
+            left: 0;
+            margin-left: 70%;
+            margin-top: -1cm;
+        
+            z-index: 10;
+            height: 1cm;
+            width: 3cm;
+            color: yellow;
+            background-color: black;
+            cursor: pointer;
+        }
+        input{
+            position: relative;
+            margin-top: 1rem;
+            margin-left: 10%;
+            border: 5px solid lightblue;
+            outline: none;
+            border-radius: 20px;
+            width: 50%;
+            height: 1.5cm;
+        }
+
+
+
 
     @media screen and (max-width: 800px) {
         

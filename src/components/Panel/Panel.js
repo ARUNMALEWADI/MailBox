@@ -10,7 +10,7 @@ const Panel = () => {
 
     const dispatch = useDispatch();
     const unread = useSelector((state) => state.inbox.unread);
-    const getRequest = useSelector((state) => state.inbox.getReq);
+
   
     let url = "https://mailbox-a63bd-default-rtdb.firebaseio.com/";
     const email = localStorage.getItem("email").replace(".", "");
@@ -24,9 +24,15 @@ const Panel = () => {
         for (let key in data) {
           arrayOfData.unshift({ id: key, ...data[key] });
         }
+       
+       
+  
+        
+  
   
         dispatch(InboxActions.changeInbox(arrayOfData));
-  
+        dispatch(InboxActions.updateGet())
+     
         let count = 0;
         arrayOfData.forEach((msg) => {
           if (msg.read === false) {
@@ -34,9 +40,11 @@ const Panel = () => {
           }
         });
         dispatch(InboxActions.updateUnread(count));
+ 
       } catch (error) {
         console.log(error);
       }
+    
     };
   
     // LogOutHandler :
@@ -46,13 +54,17 @@ const Panel = () => {
   
     // getData func will call after every 2 sec : so new mail render on UI without refresh.
     useEffect(() => {
-      const intervalId = setInterval(() => {
-        getData();
-      }, 5000);
+    //   const intervalId = setInterval(() => {
+    // getData();
+
+    //   }, 2000);
   
-      return () => {
-        clearInterval(intervalId);
-      };
+    //   return () => {
+    //     clearInterval(intervalId);
+
+          
+    //   };
+    getData()
     }, []);
 
 
@@ -74,7 +86,7 @@ return  <div className={classes.div}>
     <Link to="/inbox">
 <button>
    <section>
-    <img src={require("../../assets/inboxicon.png")} alt='image not loading'></img></section> 
+    <img src={require("../../assets/inboxicon.png")} alt=' not loading'></img></section> 
    <section>
    Inbox{unread}
     </section>
@@ -83,12 +95,12 @@ return  <div className={classes.div}>
 
      <Link to="/sentbox">
         <button>
-        <section><img src={require("../../assets/senticon.png")} alt='image not loading'></img></section> 
+        <section><img src={require("../../assets/senticon.png")} alt='not loading'></img></section> 
         <section>Sent</section>
         </button></Link>
      <Link to="/sendmail"><button>
         <section>
-        <img src={require("../../assets/composeicon.png")} alt='image not loading'></img>
+        <img src={require("../../assets/composeicon.png")} alt='not loading'></img>
        </section>
        <section>Compose</section>
         </button></Link> 

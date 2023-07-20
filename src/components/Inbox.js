@@ -14,7 +14,6 @@ const Inbox = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   
-  console.log(search);
   const InboxData = useSelector((state) => state.inbox.inboxData);
   const updateCounterOnDelete = useSelector(
     (state) => state.inbox.unread
@@ -63,7 +62,7 @@ const Inbox = () => {
   });
 
 async function UploadtoTrash(item){
-console.log("Hi");
+
 try{
   const res=await fetch(`https://mailbox-a63bd-default-rtdb.firebaseio.com/Trash/${email}.json`,{method:"POST",body:JSON.stringify(item),headers:{"Content-Type":"application/json"}})
   const response=res.json()
@@ -89,22 +88,23 @@ catch(error)
      <Panel></Panel>
      
     <div className={classes.page}>
+      <label style={{fontSize:"x-large",fontWeight:"bold",marginLeft:"1rem",backgroundColor:"red"}}>INBOX:</label>
         <input
           type="search"
-          style={{ marginBottom: "2rem", border: "1px solid" }}
+          // style={{ marginBottom: "2rem", border: "1px solid" }}
           placeholder="Search By Name"
           onChange={(e) => setSearch(e.target.value)}
         />
        <ul className={classes.ul}>
          {filteredInboxData.map((item, index) => {
               return (
-                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.from}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div><div> <button
+              <div className={classes.div1}><Link to={`/inbox/${item.id}`} > <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.from}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div></div></li></Link><button
                       type="button"
                       class={classes.delete}
                       onClick={deleteHandler.bind(null, item)}
                                 >
                       delete
-                    </button></div></div></li>
+                    </button></div>
               )})
             }
          

@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Inbox.module.css";
+import "./Inbox.module.css"
 
 import { sentBoxAction } from "./Store/SentMail-Slice";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,20 +61,22 @@ const SentMail = () => {
   return <>
        <Panel></Panel>
        <div className={classes.page}>
-       <label style={{fontSize:"x-large",fontWeight:"bold"}}>SENTBOX:</label>
+       <label style={{position:"relative",fontSize:"x-large",fontWeight:"bold",marginLeft:"30%"}}>SENTBOX:</label>
        <ul className={classes.ul}>
          {sentBoxData.map((item, index) => {
               return (
-                <li className={classes.li}><div className={item.read?classes.read:classes.unread}><div>{item.to}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div><div> <button
-                      type="button"
-                      class={classes.delete}
-                      onClick={deleteHandler.bind(null, item.id)}
-                                >
-                      delete
-                    </button></div></div></li>
+              <div className={classes.div1}> <Link to={`/sentbox/${item.id}`}><li className={classes.li}> <div className={item.read?classes.read:classes.unread}><div>{item.to}</div><div className={classes.subject}>{item.subject.substr(0,15)+'.....'}</div></div></li></Link><button
+              type="button"
+              class={classes.delete}
+              onClick={deleteHandler.bind(null, item.id)}
+                        >
+              delete
+            </button >
+            </div> 
+            
               )})
             }
-         
+       
        </ul>
       </div>
 
