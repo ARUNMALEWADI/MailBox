@@ -3,11 +3,14 @@ import { Fragment } from 'react'
 import { Authactions } from '../Store/Auth-slice'
 import { useDispatch } from 'react-redux'
 import classes from'./Authentication.module.css'
+import { useHistory } from 'react-router-dom'
+
 
 const Authentication = () => {
    const [login,setlogin]=useState(true)
    const emailref=useRef()
    const passwordref=useRef()
+   const history=useHistory();
    const dispatch=useDispatch()
      const SubmitHandler=async(e)=>{
         e.preventDefault();
@@ -30,6 +33,7 @@ const Authentication = () => {
                localStorage.setItem('email',response.email)
                localStorage.setItem('token',response.idToken)
                dispatch(Authactions.loginHandler({"email":response.email.replace('.',''),"token":response.idToken}))
+               history.replace('/inbox')
             }
             catch(error){ 
 
@@ -47,12 +51,12 @@ const Authentication = () => {
               throw new Error(response.error.message)
 
            }
-           alert("Authentication successfull!")
+           alert("Signedup successfully!")
      
            localStorage.setItem('email',response.email)
            localStorage.setItem('token',response.idToken)
            dispatch(Authactions.loginHandler({email:localStorage.getItem('email'),token:localStorage.getItem('token')}))
-        
+           history.replace('/inbox')
         }
         catch(error){ 
             alert(error)
