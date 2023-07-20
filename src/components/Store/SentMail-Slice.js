@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState ={ dataSentBox:[]}
+const initialState ={ dataSentBox:[] ,getreq:false}
 
 
 const sentBox = createSlice({
@@ -10,6 +10,10 @@ const sentBox = createSlice({
         updateSentBox(state,action)
         {
             state.dataSentBox=action.payload
+        },
+        updateGet(state)
+        {
+           state.getreq=!state.getreq;
         }
     }
 

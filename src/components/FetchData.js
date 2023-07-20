@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { InboxActions } from './Store/InBoxslice';
+import { sentBoxAction } from './Store/SentMail-Slice';
 
 const FetchData = () => {
    const dispatch = useDispatch();
@@ -48,7 +49,31 @@ const FetchData = () => {
     useEffect(() => {
         getData();
     }, []);
-  
+
+  //Sentboxdata
+  const sentboxData = async () => {
+    try {
+      const response = await fetch(`${url}/sentBox/${email}.json`);
+
+      const data = await response.json();
+
+      console.log(data);
+      const arrayData = [];
+
+      for (let key in data) {
+        arrayData.unshift({ id: key, ...data[key] });
+      }
+      dispatch(sentBoxAction.updateSentBox(arrayData));
+      dispatch(sentBoxAction.updateGet())
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  //  calling getData()
+  useEffect(() => {
+    sentboxData();
+  }, []);
 
 
 

@@ -6,23 +6,19 @@ import "./ViewMessage.css"
 const SentboxMessageView = () => {
   const { Identifier } = useParams();
   const dataSentBox = useSelector((state) => state.sentbox.dataSentBox);
+ const getreq=useSelector((state)=>state.sentbox.getreq)
   const Maildetails = dataSentBox.filter((msg) => msg.id === Identifier);
 
-  const Message = Maildetails[0].message;
-const subject=Maildetails[0].subject;
-  const user = Maildetails[0].to;
+
 
   return (
     <div className='page' >
-      {/* <Link to="/sentBox">
-        <Button>Back to sent</Button>
-      </Link> */}
-      <div className='page1' >
-        <p>To : - {user}</p>
-        <p>Subject:-{subject}</p>
+   {  getreq&& <div className='page1' >
+        <p>To : - {Maildetails[0].to}</p>
+        <p>Subject:-{Maildetails[0].subject}</p>
         <label>Message :- </label>
-        <textarea>{Message}</textarea>
-      </div>
+        <textarea>{Maildetails[0].message}</textarea>
+      </div>}
     </div>
   );
 }
