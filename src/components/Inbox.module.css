@@ -129,8 +129,8 @@ background-color: lightblue;
         
       .li{
         position: relative;
-        margin-left:-1.1.1cm;
-         width: 80%;
+        margin-left:-1.1cm;
+         width: 78.5%;
          height: 1cm;
          font-size: xx-small;
          text-align:start;
@@ -139,6 +139,23 @@ background-color: lightblue;
          border-left:none;
      
       }
+      .li div{
+        position: relative;
+        padding-left: 10%;
+        padding-right: 10%;
+        display: inline-flex;
+        align-self: center;
+    }
+    input{
+        position: relative;
+        margin-top: 1rem;
+        margin-left: 1%;
+        border: 5px solid lightblue;
+        outline: none;
+        border-radius: 20px;
+        width: 50%;
+        height: 1.5cm;
+    }
      
      
       }

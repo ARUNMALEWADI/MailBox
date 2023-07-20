@@ -31,7 +31,7 @@ const authtoken=localStorage.getItem('token')
     { (authentication||authtoken)&& <Route path="/sentbox/:Identifier"  ><SentboxMessageView/></Route>}
      {(authentication||authtoken)&& <Route path="/trash/:Identifier"><TrashboxMessageView></TrashboxMessageView></Route>}
  
-<Route path="/"><Wrongpath></Wrongpath></Route>
+<Route path="/"><Authentication></Authentication></Route>
     </Switch>
 
   </Fragment>
