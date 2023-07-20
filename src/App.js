@@ -12,21 +12,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { InboxActions } from './components/Store/InBoxslice';
 import Panel from './components/Panel/Panel';
 import FetchData from './components/FetchData';
+import TrashboxMessageView from './components/TrashboxMessageView';
 
 function App() {  
-  const getRequest = useSelector((state) => state.inbox.getReq);
-
+  const authentication = useSelector((state) => state.auth.Isloggedin);
+const authtoken=localStorage.getItem('token')
   return <Fragment>
-   {/* <Panel></Panel> */}
-   <FetchData></FetchData>
+
+  { (authentication||authtoken)&&<FetchData></FetchData>}
   <Switch>
       <Route path="/auth"><Authentication></Authentication></Route>
       <Route path="/sentbox" exact><SentMail></SentMail></Route>
       <Route path="/inbox" exact><Inbox></Inbox></Route>
       <Route path="/sendmail"><SendMail></SendMail></Route>
-      <Route path="/trash"><Trash></Trash></Route>
+      <Route path="/trash" exact><Trash></Trash></Route>
       <Route path="/inbox/:Identifier" exact ><InboxMessageView/></Route>
       <Route path="/sentbox/:Identifier"  ><SentboxMessageView/></Route>
+      <Route path="/trash/:Identifier"><TrashboxMessageView></TrashboxMessageView></Route>
 
       
     </Switch>

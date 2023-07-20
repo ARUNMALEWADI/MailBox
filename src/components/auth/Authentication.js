@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Fragment } from 'react'
 import { Authactions } from '../Store/Auth-slice'
 import { useDispatch } from 'react-redux'
+import classes from'./Authentication.module.css'
 
 const Authentication = () => {
    const [login,setlogin]=useState(true)
@@ -19,9 +20,9 @@ const Authentication = () => {
             {  try{
                 const res=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1439_3jsxP2uXWTZHi8LA8DnuWLXUVOg`,{method:"POST",body:JSON.stringify(authdata),headers:{"Content-Type":"application/json"}})
                 const response=await res.json()
-                console.log(response.ok);
+               
                if(response&&response.error)
-               { console.log("Hi"); 
+               { 
                  throw new Error(response.error.message)
  
                }
@@ -41,8 +42,9 @@ const Authentication = () => {
             const res=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA1439_3jsxP2uXWTZHi8LA8DnuWLXUVOg`,{method:"POST",body:JSON.stringify(authdata),headers:{"Content-Type":"application/json"}})
             const response=await res.json()
         
-           if(!response.ok)
-           {  throw new Error(response.error.message)
+           if(response.ok)
+           { 
+              throw new Error(response.error.message)
 
            }
            alert("Authentication successfull!")
@@ -64,9 +66,10 @@ const Authentication = () => {
         setlogin(!login)
     }
   return <Fragment>
-         <div>
+         <div className={classes.div1}>
+            <div>
             <form onSubmit={SubmitHandler}  >
-             <h1 class="text-3xl font-bold underline">{login?"Login":"SignUp"}</h1>
+             <h1 >{login?"Login":"SignUp"}</h1>
              <label>Email:</label>
              <input type='email' required  class="border-2 border-red-900 ..." ref={emailref}></input>
              <label>Password:</label>
@@ -74,7 +77,7 @@ const Authentication = () => {
              <button class="bg-[#e11d48] h-10 w-20 text-[#f0f9ff]" type='submit' >{login?"Login":"SignUp"}</button>
              <p onClick={ToggleHandler}>{login?"New to mailbox? Signup":"Already have an account?Login"}</p>
             </form>
-
+          </div>
          </div>
   </Fragment>
 }

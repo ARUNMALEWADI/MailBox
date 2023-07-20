@@ -86,7 +86,7 @@ catch(error)
 
   return<Fragment>
      <Panel></Panel>
-     
+ 
     <div className={classes.page}>
       <label style={{fontSize:"x-large",fontWeight:"bold",marginLeft:"1rem",backgroundColor:"red"}}>INBOX:</label>
         <input

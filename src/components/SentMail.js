@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Inbox.module.css";
-import "./Inbox.module.css"
+// import "./Inbox.module.css"
 
 import { sentBoxAction } from "./Store/SentMail-Slice";
 import { useSelector, useDispatch } from "react-redux";

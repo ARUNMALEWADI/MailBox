@@ -10,12 +10,14 @@ const auth=createSlice({
     loginHandler(state,action)
     {  state.email=action.payload.email
        state.token=action.payload.token
+       state.Isloggedin=true
 
     },
     logoutHandler(state)
     {
         state.email=''
        state.token=''
+       state.Isloggedin=false;
        localStorage.removeItem("email")
        localStorage.removeItem('token')
     }

@@ -3,11 +3,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { InboxActions } from './Store/InBoxslice';
 import { sentBoxAction } from './Store/SentMail-Slice';
+import { Trashactions } from './Store/Trashboxslice';
 
 const FetchData = () => {
    const dispatch = useDispatch();
     const unread = useSelector((state) => state.inbox.unread);
-    const getRequest = useSelector((state) => state.inbox.getReq);
+    const getRequest = useSelector((state) => state.inbox.getrequest);
  
   
     let url = "https://mailbox-a63bd-default-rtdb.firebaseio.com/";
@@ -25,7 +26,7 @@ const FetchData = () => {
   
         dispatch(InboxActions.changeInbox(arrayOfData));
         if(getRequest==false)
-      {  dispatch(InboxActions.updateGet())
+      {  dispatch(InboxActions.updateGetRequest())
         console.log("Haad")
       }
         let count = 0;
@@ -75,6 +76,27 @@ const FetchData = () => {
     sentboxData();
   }, []);
 
+
+
+
+  //trashdata
+  useEffect(()=>{
+    const GetTrashData=async()=>{
+      const res=await fetch(`https://mailbox-a63bd-default-rtdb.firebaseio.com/Trash/${email}.json`)
+      const response=await res.json();
+      let temparr=[];
+      if(response)
+      {
+      for(let key in response)
+      {  temparr.push({from:response[key].from,message:response[key].message,subject:response[key].subject,id:key})
+
+      }
+      dispatch(Trashactions.updateTrashBox(temparr))
+      dispatch(Trashactions.updateGet())
+    }
+    }
+    GetTrashData()
+  },[])
 
 
   return (

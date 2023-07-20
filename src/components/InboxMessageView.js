@@ -5,7 +5,7 @@ import './ViewMessage.css'
 
 
 const InboxMessageView = () => {
-  const getRequest = useSelector((state) => state.inbox.getReq);
+  const getRequest = useSelector((state) => state.inbox.getrequest);
   const {Identifier} =useParams();
   const arrayData = useSelector(state =>state.inbox.inboxData)
   console.log(arrayData);
@@ -40,7 +40,7 @@ useEffect(()=>{
   putData()
 },[])
 
-
+console.log(getRequest)
   return (
     <div className='page'>
     <div className='page1'>
