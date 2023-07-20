@@ -88,7 +88,8 @@ return  <div className={classes.div}>
    <section>
     <img src={require("../../assets/inboxicon.png")} alt=' not loading'></img></section> 
    <section>
-   Inbox{unread}
+   Inbox
+  {unread>0&&<section  style={{display:"inline-flex",alignContent:"flex-start",color:"red",fontWeight:"bold"}}>{unread}</section>}
     </section>
      </button>  
      </Link> 
